@@ -21,5 +21,3 @@ btnCrear.addEventListener("click", () => {
     lblNuevoTicket.innerText = ticket;
   });
 });
-
-console.log("Nuevo Ticket HTML");

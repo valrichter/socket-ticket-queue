@@ -11,7 +11,7 @@ class Ticket {
 class TicketControl {
   constructor() {
     this.ultimo = 0;
-    this.hoy = new Date().getDate();
+    this.hoy = new Date().getDate(); // 11
     this.tickets = [];
     this.ultimos4 = [];
 
@@ -29,13 +29,12 @@ class TicketControl {
 
   init() {
     const { hoy, tickets, ultimo, ultimos4 } = require("../db/data.json");
-
     if (hoy === this.hoy) {
       this.tickets = tickets;
       this.ultimo = ultimo;
       this.ultimos4 = ultimos4;
     } else {
-      // El otro dia
+      // Es otro dia
       this.guardarDB();
     }
   }
@@ -60,7 +59,7 @@ class TicketControl {
       return null;
     }
 
-    const ticket = this.tickets.shift; // this.tickets[0]
+    const ticket = this.tickets.shift(); // this.tickets[0];
     ticket.escritorio = escritorio;
 
     this.ultimos4.unshift(ticket);
@@ -70,6 +69,7 @@ class TicketControl {
     }
 
     this.guardarDB();
+
     return ticket;
   }
 }
